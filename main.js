@@ -1,3 +1,4 @@
+/*
 let playerScore = 0;
 let botScore = 0;
 let r = 'r';
@@ -61,4 +62,33 @@ while (true) {
 
 function scoreboard(){
     console.log("player: " + playerScore + " bot: " + botScore)
+}
+*/
+const body = document.querySelector('body');
+
+const rockBtn = document.createElement('button');
+rockBtn.classList.add('rock');
+rockBtn.textContent = 'Rock';
+rockBtn.addEventListener('click', playerMove);
+
+const paperBtn = document.createElement('button');
+paperBtn.classList.add('paper');
+paperBtn.textContent = 'Paper';
+
+const scissorsBtn = document.createElement('button');
+scissorsBtn.classList.add('scissors');
+scissorsBtn.textContent = 'Scissors';
+
+body.append(rockBtn, paperBtn, scissorsBtn);
+
+
+function testfunction() {
+    console.log('testing');
+}
+
+//const rockBtn = document.querySelector('.rock');
+//rockBtn.addEventListener('click', testfunction);
+
+function playerMove(playerMove) {
+    console.log('you have selected' + playerMove);
 }
