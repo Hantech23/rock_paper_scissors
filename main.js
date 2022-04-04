@@ -13,7 +13,7 @@ function computerPlay() {
 let playerScore = 0;
 let computerScore = 0;
 function scoreboard(){
-    console.log("Player: " + playerScore + " Computer: " + computerScore);
+    return "Player: " + playerScore + " Computer: " + computerScore;
 }
 
 //ROUND PLAY
@@ -44,13 +44,10 @@ function roundPlay(playerSelection, computerSelection) {
             }
             break;
     }
-    scoreboard();  
+    score.textContent = scoreboard();  
 }
-console.log('test game:');
-roundPlay(rock, computerPlay());
-console.log('end test');
 
-//BUTTONS
+//UI
 const body = document.querySelector('body');
 
 const rockBtn = document.createElement('button');
@@ -65,11 +62,7 @@ const scissorsBtn = document.createElement('button');
 scissorsBtn.textContent = 'Scissors';
 scissorsBtn.addEventListener('click', () => roundPlay(scissors, computerPlay()));
 
+const score = document.createElement('div');
+score.textContent = scoreboard();
 
-body.append(rockBtn, paperBtn, scissorsBtn);
-
-/*
-const test = document.createElement('button');
-test.textContent = 'Test Button';
-test.addEventListener('click', )
-*/
+body.append(rockBtn, paperBtn, scissorsBtn, score);
