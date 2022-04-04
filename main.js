@@ -18,6 +18,8 @@ function scoreboard(){
 
 //ROUND PLAY
 function roundPlay(playerSelection, computerSelection) {    
+
+    
     switch (playerSelection) {
         case rock:
             if (computerSelection == paper) {
@@ -44,7 +46,19 @@ function roundPlay(playerSelection, computerSelection) {
             }
             break;
     }
-    score.textContent = scoreboard();  
+    score.textContent = scoreboard();
+
+    if (playerScore == 3) {
+        score.textContent = scoreboard() + '\r\nYou won!';
+        playerScore = 0;
+        computerScore = 0;
+    }
+    if (computerScore == 3) {
+        score.textContent = scoreboard() + '\r\nYou lose :(';
+        playerScore = 0;
+        computerScore = 0;
+    }
+    
 }
 
 //UI
@@ -64,5 +78,6 @@ scissorsBtn.addEventListener('click', () => roundPlay(scissors, computerPlay()))
 
 const score = document.createElement('div');
 score.textContent = scoreboard();
+
 
 body.append(rockBtn, paperBtn, scissorsBtn, score);
