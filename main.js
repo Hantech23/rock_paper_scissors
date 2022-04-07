@@ -12,14 +12,9 @@ function computerPlay() {
 //SCOREBOARD
 let playerScore = 0;
 let computerScore = 0;
-function scoreboard(){
-    return "Player: " + playerScore + " Computer: " + computerScore;
-}
 
 //ROUND PLAY
 function roundPlay(playerSelection, computerSelection) {    
-
-    
     switch (playerSelection) {
         case rock:
             if (computerSelection == paper) {
@@ -46,38 +41,46 @@ function roundPlay(playerSelection, computerSelection) {
             }
             break;
     }
-    score.textContent = scoreboard();
+    scoreLeft.textContent = playerScore;
+    scoreRight.textContent = computerScore;
 
     if (playerScore == 3) {
-        score.textContent = scoreboard() + '\r\nYou won!';
         playerScore = 0;
         computerScore = 0;
     }
     if (computerScore == 3) {
-        score.textContent = scoreboard() + '\r\nYou lose :(';
         playerScore = 0;
         computerScore = 0;
     }
-    
 }
 
 //UI
-const body = document.querySelector('body');
+
+//BUTTONS
+const buttons = document.querySelector('.buttons');
 
 const rockBtn = document.createElement('button');
 rockBtn.textContent = 'Rock';
 rockBtn.addEventListener('click', () => roundPlay(rock, computerPlay()));
+rockBtn.setAttribute('style', 'color: greenyellow; font-size: 1.1vw; background-color: rgba(1, 1, 27, 0.788); border-radius: 15px;')
 
 const paperBtn = document.createElement('button');
 paperBtn.textContent = 'Paper';
 paperBtn.addEventListener('click', () => roundPlay(paper, computerPlay()));
+paperBtn.setAttribute('style', 'color: greenyellow; font-size: 1.1vw; background-color: rgba(1, 1, 27, 0.788); border-radius: 15px;')
 
 const scissorsBtn = document.createElement('button');
 scissorsBtn.textContent = 'Scissors';
 scissorsBtn.addEventListener('click', () => roundPlay(scissors, computerPlay()));
+scissorsBtn.setAttribute('style', 'color: greenyellow; font-size: 1.1vw; background-color: rgba(1, 1, 27, 0.788); border-radius: 15px;')
 
-const score = document.createElement('div');
-score.textContent = scoreboard();
+buttons.append(rockBtn, paperBtn, scissorsBtn);
 
+//SCOREBOARD
+const scoreLeft = document.querySelector('.score-left');
+scoreLeft.textContent = playerScore;
+scoreLeft.setAttribute('style', 'color: greenyellow');
 
-body.append(rockBtn, paperBtn, scissorsBtn, score);
+const scoreRight = document.querySelector('.score-right');
+scoreRight.textContent = computerScore;
+scoreRight.setAttribute('style', 'color: greenyellow');
